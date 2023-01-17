@@ -53,7 +53,7 @@ const CustomModal = ({selectedRowKeys}: CustomModalPropsType) => {
                     Отклонить
                 </Button>]}>
             <p className={styles.text}
-               key={selectedRowKeys.name}>{`Вы уверены что хотите аннулировать товар(ы): ${checkNames.map(el => el.name)}`}</p>
+               key={selectedRowKeys.name}>{`Вы уверены что хотите аннулировать товар(ы): ${checkNames.map((el: { name: string }) => el.name)}`}</p>
         </Modal>
     </div>
 }
