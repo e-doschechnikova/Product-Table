@@ -27,8 +27,8 @@ const setDocumentsAC = (documents: any) => ({
 
 export const setDocumentsTC = () => async (dispatch: Dispatch) => {
     try {
-        const reqDocFirst = await fetch('http://localhost:3000/documents1')
-        const reqDocSecond = await fetch(`http://localhost:3000/documents2`)
+        const reqDocFirst = await fetch('http://localhost:3010/documents1')
+        const reqDocSecond = await fetch(`http://localhost:3010/documents2`)
         let dataDocFirst = await reqDocFirst.json()
         const dataDocSecond = await reqDocSecond.json()
         const concatData = [...dataDocFirst, ...dataDocSecond]
@@ -41,7 +41,7 @@ export const setDocumentsTC = () => async (dispatch: Dispatch) => {
 
 export const cancelProductTC = (idProducts: any) => async (dispatch: Dispatch) => {
     try {
-        const req = await fetch('http://localhost:3000/cancel', {
+        const req = await fetch('http://localhost:3010/cancel', {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -51,8 +51,8 @@ export const cancelProductTC = (idProducts: any) => async (dispatch: Dispatch) =
             })
         });
         if (req.status === 200) {
-            const reqDocFirst = await fetch('http://localhost:3000/documents1')
-            const reqDocSecond = await fetch(`http://localhost:3000/documents2`)
+            const reqDocFirst = await fetch('http://localhost:3010/documents1')
+            const reqDocSecond = await fetch(`http://localhost:3010/documents2`)
             let dataDocFirst = await reqDocFirst.json()
             const dataDocSecond = await reqDocSecond.json()
             const concatData = [...dataDocFirst, ...dataDocSecond]
