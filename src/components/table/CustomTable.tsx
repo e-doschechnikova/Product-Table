@@ -34,6 +34,7 @@ const columns: ColumnsType<DataType> = [
         sorter: (a: DataType, b: DataType) => {
             return new Date(a.deliveryDate).getTime() - new Date(b.deliveryDate).getTime()
         },
+        defaultSortOrder: 'descend',
         key: 'localDate'
     },
     {
