@@ -3,8 +3,7 @@ import AppBar from "./components/header/AppBar";
 import {Col, Row} from "antd";
 import CustomTable from "./components/table/CustomTable";
 
-
-function App() {
+const App: React.FC = () => {
     return (
         <div>
             <AppBar/>
