@@ -4,20 +4,22 @@ import {Button, Modal} from 'antd';
 import {buttonModalStyleCancel, buttonModalStyleReject, buttonStyle} from "../../common/button-style";
 import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {cancelProductTC, setDocumentsTC} from "../../redux/documents-reducer";
-
+import {DataType} from "../../components/table/CustomTable";
 
 type CustomModalPropsType = {
-    selectedRowKeys: any
+    selectedRowKeys: Array<string>
 }
 
-const CustomModal = ({selectedRowKeys}: CustomModalPropsType) => {
+const CustomModal: React.FC<CustomModalPropsType> = ({selectedRowKeys}) => {
+
     const [checkNames, setCheckNames] = useState([]);
     const [open, setOpen] = useState(false);
+
     const dispatch = useAppDispatch()
-    const data = useAppSelector(state => state.documents.documents)
+    const data: Array = useAppSelector(state => state.documents.documents)
 
     useEffect(() => {
-        setCheckNames(data.filter((el) => {
+        setCheckNames(data.filter((el: ) => {
             return selectedRowKeys.includes(el.id)
         }))
     }, [data, selectedRowKeys])
@@ -45,15 +47,14 @@ const CustomModal = ({selectedRowKeys}: CustomModalPropsType) => {
             onCancel={cancelButton}
             onOk={rejectButton}
             footer={[
-                <Button key="submit" style={buttonModalStyleReject} onClick={cancelButton}>
+                <Button style={buttonModalStyleReject} onClick={cancelButton}>
                     Применить
                 </Button>,
-                <Button key="submit" type="primary" onClick={rejectButton} style={buttonModalStyleCancel}
+                <Button type="primary" onClick={rejectButton} style={buttonModalStyleCancel}
                         danger>
                     Отклонить
                 </Button>]}>
-            <p className={styles.text}
-               key={selectedRowKeys.name}>{`Вы уверены что хотите аннулировать товар(ы): ${checkNames.map((el: { name: string }) => el.name)}`}</p>
+            <p className={styles.text}>{`Вы уверены что хотите аннулировать товар(ы): ${checkNames.map((el: { name: string }) => el.name)}`}</p>
         </Modal>
     </div>
 }
