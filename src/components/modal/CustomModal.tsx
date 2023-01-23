@@ -24,7 +24,6 @@ const CustomModal: React.FC<CustomModalPropsType> = ({selectedRowKeys}) => {
 
     const cancelButton = () => {
         dispatch(cancelProductTC(selectedRowKeys))
-        dispatch(setDocumentsTC())
         setOpen(false);
     }
     const rejectButton = () => {
